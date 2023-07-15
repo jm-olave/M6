@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "Blog/base.html" %}
+{% block content %}
+<div>
     <h1> Nueva pagina principal</h1>
-
     {% for publicacion in publicacionesLlave %}
-        <h2>{{publicacion.titulo}}</h2>
-        <h3>{{publicacion.autor}}</h3>
-        <p>{{publicacion.contenido}}</p>
-        <a>{{publicacion.fecha}}</a>
+    <h2>{{publicacion.titulo}}</h2>
+    <h3>{{publicacion.autor}}</h3>
+    <p>{{publicacion.contenido}}</p>
+    <a>{{publicacion.fecha}}</a>
     {% endfor %}
-</body>
-</html>
+</div>
+{% endblock content %}

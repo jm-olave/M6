@@ -22,11 +22,17 @@ publicaciones = [
         'fecha': "13 de julio del 2023"
     }
 ]
+def calcular(a,b):
+    return a+b
 def home(request):
+    x = 1
+    y = 2
+    calcular(x,y)
     contexto ={
-        'publicacionesLlave': publicaciones
+        'publicacionesLlave': publicaciones,
+        'titulo': 'Blog-Landing'
     }
     return render(request,'Blog/index.html', contexto)
 
 def contacto(request):
-    return render(request, 'Blog/contacto.html',  {'titulo': "AwakeRed"})
+    return render(request, 'Blog/contacto.html',  {'titulo': "Contacto"})
