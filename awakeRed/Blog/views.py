@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Publicacion
 # Create your views here.
 
 publicaciones = [
@@ -29,7 +30,7 @@ def home(request):
     y = 2
     calcular(x,y)
     contexto ={
-        'publicacionesLlave': publicaciones,
+        'publicacionesLlave':publicaciones,
         'titulo': 'Blog-Landing'
     }
     return render(request,'Blog/index.html', contexto)

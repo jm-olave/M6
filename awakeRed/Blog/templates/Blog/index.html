@@ -1,12 +1,21 @@
 {% extends "Blog/base.html" %}
 {% block content %}
 <div>
-    <h1> Nueva pagina principal</h1>
+    <div class="titulo_index">
+        <h1> Ultimas publicaciones</h1>
+    </div>
+    <br>
     {% for publicacion in publicacionesLlave %}
-    <h2>{{publicacion.titulo}}</h2>
-    <h3>{{publicacion.autor}}</h3>
-    <p>{{publicacion.contenido}}</p>
-    <a>{{publicacion.fecha}}</a>
+    <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{publicacion.autor}}</a>
+            <small class="text-muted">{{publicacion.fecha}}</small>
+          </div>
+          <h2><a class="article-title" href="#">{{publicacion.titulo}}</a></h2>
+          <p class="article-content">{{publicacion.contenido}}</p>
+        </div>
+      </article>
     {% endfor %}
 </div>
 {% endblock content %}
