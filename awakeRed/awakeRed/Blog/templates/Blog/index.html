@@ -1,0 +1,21 @@
+{% extends "Blog/base.html" %}
+{% block content %}
+<div>
+    <div class="titulo_index">
+        <h1> Ultimas publicaciones</h1>
+    </div>
+    <br>
+    {% for publicacion in publicacionesLlave %}
+    <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{publicacion.autor}}</a>
+            <small class="text-muted">{{publicacion.fecha}}</small>
+          </div>
+          <h2><a class="article-title" href="#">{{publicacion.titulo}}</a></h2>
+          <p class="article-content">{{publicacion.contenido}}</p>
+        </div>
+      </article>
+    {% endfor %}
+</div>
+{% endblock content %}
