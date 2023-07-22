@@ -33,6 +33,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'crispy_bootstrap4',
     'crispy_forms',
     'Blog.apps.BlogConfig',
