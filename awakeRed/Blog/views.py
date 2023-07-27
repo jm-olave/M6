@@ -1,21 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Publicacion
-from .forms import TweetForm, ContactoForm
+from .forms import TweetForm, ContactoForm, ComentarioForm
 from django.contrib import messages
 # Create your views here.
 
-def calcular(a,b):
-    return a+b
+
 def home(request):
-    x = 1
-    y = 2
-    calcular(x,y)
     contexto ={
         'publicacionesLlave' : Publicacion.objects.raw('SELECT * FROM Blog_publicacion ORDER BY id DESC'),
         'titulo': 'Blog-Landing'
     }
-    print(contexto['publicacionesLlave'])
     return render(request,'Blog/index.html', contexto)
 
 def contacto(request):
@@ -47,3 +42,16 @@ def createTweet(request):
             
     formulario_get = TweetForm()
     return render(request, "Blog/tweet_create.html",{'formulario': formulario_get})
+
+def crear_comentario(request, publicacion_id):
+    publicacion = Publicacion.objects.get(pk=publicacion_id)
+    if request.method == "POST":
+        formulario = ComentarioForm(request.POST)
+        if formulario.is_valid():
+            comentario = formulario.save(commit=False)
+            comentario.usuario = request.user
+            comentario.publicacion = publicacion
+            comentario.save()
+    else:
+        formulario = ComentarioForm()
+    return render(request, 'Blog/crear_comentario.html', {'formulario': formulario})

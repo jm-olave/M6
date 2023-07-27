@@ -12,3 +12,10 @@ class Tweet(models.Model):
     cuerpo = models.TextField(max_length=250)
     fecha = models.DateTimeField(default= timezone.now)
 
+# Comentario
+class Comentario(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    publicacion = models.ForeignKey(Publicacion,  on_delete=models.CASCADE)
+    contenido = models.TextField()
+    fecha = models.DateTimeField(default= timezone.now)
+

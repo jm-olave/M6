@@ -1,5 +1,5 @@
 from django import forms
-from .models import Tweet, Publicacion
+from .models import Tweet, Publicacion, Comentario
 
 # asociado a un modelo
 class TweetForm(forms.ModelForm):
@@ -19,3 +19,10 @@ class TweetForm(forms.ModelForm):
 class ContactoForm(forms.Form):
     texto = forms.CharField(label = 'Contactanos')
     check = forms.BooleanField(label='acepta las politicas', required=False)
+
+# formulario para Comentario
+
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ["contenido"]

@@ -22,6 +22,7 @@
           <h2><a class="article-title" href="#">{{publicacion.titulo}}</a></h2>
           <p class="article-content">{{publicacion.contenido}}</p>
         </div>
+        <a href="{% url 'crear_comentario' publicacion_id=publicacion.id %}"> Crear Comentario</a>
       </article>
     {% endfor %}
     

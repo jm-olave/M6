@@ -1,0 +1,8 @@
+{% extends "Blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div style="display:flex; justify-content:center; align-items: center;">
+        <h1> Este es el perfil del usuario {{user.username}}</h1>
+        <img src="{{ user.perfil.imagen.url }}" alt="esto no cargo">
+    </div>
+{% endblock content %}

@@ -5,14 +5,14 @@
        <form method="POST">
             {% csrf_token %}
             <div class = "form-group">
-                {{formulario | crispy}}
+                {{form | crispy}}
             </div>
-            <button type="submit" class="btn btn-success">Registrarse</button>
+            <button type="submit" class="btn btn-success">Log in</button>
        </form>
        <div>
-        <small>
-            Ya tienes cuenta? <a href="{% url 'login' %}"> Log in</a>
-        </small>
-        </div>
+            <small>
+                Necesitas una cuenta? <a href="{% url 'registro' %}"> Registro</a>
+            </small>
+       </div>
     </div>
 {% endblock content %}

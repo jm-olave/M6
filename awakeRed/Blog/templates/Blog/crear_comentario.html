@@ -1,0 +1,10 @@
+{% extends "Blog/base.html" %}
+
+{% block content %}
+    <h2> Crear Comentario</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{formulario.as_p}}
+        <button type="submit"> Crear Comentario</button>
+    </form>
+{% endblock content%}
