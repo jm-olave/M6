@@ -1,0 +1,39 @@
+{% extends "Blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+    <div class="media">
+        <div class="row">
+            <div class="col-2">
+                <img class ="rounded-circle account-img" src="{{ user.perfil.imagen.url }}" alt="esto no cargo">
+            </div>
+            <div class="col">
+                <div class="media-body">
+                    <h2> Este es el perfil del usuario {{user.username}}</h2>
+                    <p class="text-secondary">{{user.email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dropdown">
+
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownButton"  data-bs-toggle="dropdown" aria-expanded="false" >
+             Actualizar Perfil
+        </button>
+        <div class="dropdown-menu">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{formulario_usuario | crispy}}
+                    {{formulario_perfil | crispy}}
+                </div>
+                <button type="submit"> Actualizar</button>
+            </form>
+        </div>
+    </div>
+    
+    
+</div>
+       
+        
+{% endblock content %}

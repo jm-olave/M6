@@ -1,0 +1,18 @@
+{% extends "Blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div style="display:flex; justify-content:center; align-items: center;">
+       <form method="POST">
+            {% csrf_token %}
+            <div class = "form-group">
+                {{form | crispy}}
+            </div>
+            <button type="submit" class="btn btn-success">Log in</button>
+       </form>
+       <div>
+            <small>
+                Necesitas una cuenta? <a href="{% url 'registro' %}"> Registro</a>
+            </small>
+       </div>
+    </div>
+{% endblock content %}
