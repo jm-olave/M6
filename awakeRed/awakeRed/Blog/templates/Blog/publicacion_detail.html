@@ -1,0 +1,15 @@
+{% extends "Blog/base.html" %}
+{% block content %}
+<article class="media content-section">
+    <div class="media-body">
+    <img class ="rounded-circle account-img" src="{{ object.autor.perfil.imagen.url}}" alt="no cargo">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">{{object.autor}}</a>
+        <small class="text-muted">{{object.fecha}}</small>
+      </div>
+      <h2><a class="article-title" href="#">{{object.titulo}}</a></h2>
+      <p class="article-content">{{object.contenido}}</p>
+    </div>
+    <a href="{% url 'crear_comentario' publicacion_id=publicacion.id %}"> Crear Comentario</a>
+  </article>
+{% endblock content %}

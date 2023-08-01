@@ -1,0 +1,9 @@
+{% extends "Blog/base.html" %}
+{% block content %}
+<form method= "POST" >
+    {% csrf_token %}
+    <h2> Estas seguro que quieres eliminar la publicacion? {{object.titulo}}</h2>
+    {{form}}
+    <button type="submit"> Si, eliminar publicacion</button>
+</form>
+{% endblock content %}

@@ -12,7 +12,7 @@ def registro(request):
             # traigo el usuario y el dato del choiceField
             usuario = formulario_p.save(commit=False)
             grupo_seleccionado = formulario_p.cleaned_data['tipo_usuario']
-
+            
             # condiciones para asignacion al grupo correcto
             if grupo_seleccionado == 'admin':
                 grupo = Group.objects.get(name='admin')

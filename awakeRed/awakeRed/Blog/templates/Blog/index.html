@@ -19,9 +19,11 @@
             <a class="mr-2" href="#">{{publicacion.autor}}</a>
             <small class="text-muted">{{publicacion.fecha}}</small>
           </div>
-          <h2><a class="article-title" href="#">{{publicacion.titulo}}</a></h2>
+          <h2><a class="article-title" href="{% url 'publicacion-detalle' publicacion.id %}">{{publicacion.titulo}}</a></h2>
           <p class="article-content">{{publicacion.contenido}}</p>
         </div>
+        <a href="{% url 'publicacion-actualizar' publicacion.id%}"> Actualizar publicacion</a>
+        <a style="color: red;" href="{% url 'publicacion-eliminar' publicacion.id%}"> Borrar publicacion</a>
         <a href="{% url 'crear_comentario' publicacion_id=publicacion.id %}"> Crear Comentario</a>
       </article>
     {% endfor %}

@@ -1,8 +1,11 @@
+from django.forms.models import BaseModelForm
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Publicacion
 from .forms import TweetForm, ContactoForm, ComentarioForm
 from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 # Create your views here.
 
 
@@ -55,3 +58,37 @@ def crear_comentario(request, publicacion_id):
     else:
         formulario = ComentarioForm()
     return render(request, 'Blog/crear_comentario.html', {'formulario': formulario})
+
+
+# Vistas Genericas
+
+# DETALLE publicacion
+class PublicacionDetailView(DetailView):
+    model = Publicacion
+      #<app>/<model>_<viewtype>.html
+
+# CREAR publicacion
+class PublicacionCreateView(CreateView):
+    model = Publicacion
+    fields = ['titulo','contenido']
+
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
+
+# EDITAR publicacion
+class PublicacionUpdateView(UpdateView):
+    model = Publicacion
+    template_name = 'Blog/publicacion_actualizar.html'
+    fields = ['titulo','contenido']
+
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
+    
+# ELIMINAR publicacion
+class PublicacionDeleteView(DeleteView):
+    model = Publicacion
+    template_name = 'Blog/publicacion_confirm_delete.html'
+    success_url = reverse_lazy('blog-home')
+
